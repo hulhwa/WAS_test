@@ -7,7 +7,7 @@ import { MonitoringModel, MonitoringSchema } from './monitoring.model';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: MonitoringModel.name, schema: MonitoringSchema}]),
+    MongooseModule.forFeature([{ name: 'Monitoring', schema: MonitoringSchema}]),
   ],
   controllers: [MonitoringController],
   providers: [MonitoringService]
