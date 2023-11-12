@@ -4,7 +4,8 @@ import axios from 'axios';
 
 @Injectable()
 export class TicketsService {
-  async getTicketsList(/*airline: string, departure: string, destination: string, departuredate: Date*/ ticketsInfoDto: TicketsDto): Promise<Array<any>> {
+  
+  async getTicketsList( ticketsInfoDto: TicketsInfoDto): Promise<Array<any>> {
     // TODO 
     const response = await axios({
       url: process.env.SPIDER_HOST,

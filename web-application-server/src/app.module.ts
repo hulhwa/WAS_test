@@ -1,14 +1,17 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TicketsModule } from './tickets/tickets.module';
+import { MonitoringModule } from './monitoring/monitoring.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TicketsModule } from './tickets/tickets.module';
-import { TicketsController } from './tickets/tickets.controller';
-import { TicketsService } from './tickets/tickets.service';
-import { MonitoringModule } from './monitoring/monitoring.module';
 
 @Module({
-  imports: [TicketsModule, MonitoringModule],
-  controllers: [AppController, TicketsController],
-  providers: [AppService, TicketsService],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017/dkdb'),
+    TicketsModule,
+    MonitoringModule
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
