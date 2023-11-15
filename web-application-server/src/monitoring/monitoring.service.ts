@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { MonitoringTicketDto } from './dto/monitoringTicket.dto';
 import { MonitoringDocument } from './monitoring.model';
+import axios from 'axios';
 
 @Injectable()
 export class MonitoringService {
@@ -12,13 +13,41 @@ export class MonitoringService {
   ) {}
 
   async postToMonitoring(monitoringTicketDto: MonitoringTicketDto): Promise<MonitoringDocument> {
-    const requestId = uuidv4();
+    const request_id = uuidv4();
     const monitoringData = {
       ...monitoringTicketDto,
-      requestId,
+      request_id,
     };
 
-    return new this.monitoringModel(monitoringData).save();
+    const savedDocument = new this.monitoringModel(monitoringData).save();
+
+    // 모니터링 큐 서버에 데이터 전송
+    /*
+    try {
+      await axios.post('모니터링 큐 서버 URL', { ...monitoringData });
+    } catch (error) {
+      console.error('Error sending data to monitoring queue server', error);
+    }*/
+
+    return savedDocument;
   }
 
+  async deleteMonitoring(request_id: string): Promise<any> {
+    const deleteResult = this.monitoringModel.deleteOne({ request_id }).exec();
+
+    // 모니터링 큐 서버에 삭제 요청 전송
+    /*
+    try {
+      await axios.post('모니터링 큐 서버 삭제 엔드포인트 URL', { request_id });
+    } catch (error) {
+      console.error('Error sending delete request to monitoring queue server', error);
+    }
+    */
+   
+    return deleteResult;
+  }
+
+  async getList() {
+    return this.monitoringModel.find().exec();
+  }
 }

@@ -19,7 +19,7 @@ export const MonitoringSchema = new mongoose.Schema({
     stopover: [StopoverSchema],
   },
   email: String,
-  requestId: String,
+  request_id: String,
 });
 
 interface Stopover {
@@ -40,7 +40,7 @@ export interface MonitoringDocument extends Document {
     stopover: Stopover[];
   };
   email: string;
-  requestId: string;
+  request_id: string;
 }
 
 // 모델 생성
