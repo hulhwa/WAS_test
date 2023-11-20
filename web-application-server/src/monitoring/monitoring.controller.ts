@@ -9,6 +9,7 @@ export class MonitoringController {
 
   @Post('/register')
   async registerMonitoringTicket(@Body() monitoringTicketDto: MonitoringTicketDto): Promise<void> {
+    console.log('register 감지');
     await this.monitoringService.postToMonitoring(monitoringTicketDto);
   }
 
@@ -20,6 +21,7 @@ export class MonitoringController {
 
   @Get('/list')
   async getMonitoringList() {
+    console.log('getlist 감지');
     return this.monitoringService.getList();
   }
 }
