@@ -36,12 +36,11 @@ export class TicketsService {
   async getTicketsList(ticketsDto: TicketsDto): Promise<Array<any>> {
     try {
       const response = await axios({
-        url: process.env.SPIDER_HOST,
+        url: process.env.SPIDER_HOST, //지정항공편조회 api
         method: 'GET',
         params: {
           ...ticketsDto,
-        },
-        timeout: 4000,
+        }
       });
 
       const flightInfo: Array<any> = response.data;
