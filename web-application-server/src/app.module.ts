@@ -7,11 +7,9 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.DB_HOST, {
-      user: process.env.DB_USERNAME,
-      pass: process.env.DB_PASSWORD,
-      dbName: process.env.DB_NAME
-    }),
+    MongooseModule.forRoot(
+      'mongodb://dk_123:dk_db@localhost:27017/dkdb'
+    ),
     TicketsModule,
     MonitoringModule
   ],
