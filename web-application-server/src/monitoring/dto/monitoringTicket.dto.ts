@@ -16,4 +16,5 @@ export interface Stopover {
   isSoldOut: boolean;
   link: string;
   airline: string;
+  timeTaken : string;
 }

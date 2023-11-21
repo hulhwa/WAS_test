@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import { Document } from 'mongoose';
 
+
 export const StopoverSchema = new mongoose.Schema({
   flightNumber: String,
   departure: String,
@@ -11,6 +12,7 @@ export const StopoverSchema = new mongoose.Schema({
   isSoldOut: Boolean,
   link: String,
   airline: String,
+  timeTaken: String
 });
 
 export const MonitoringSchema = new mongoose.Schema({
@@ -32,6 +34,7 @@ interface Stopover {
   isSoldOut: boolean;
   link: string;
   airline: string;
+  timeTaken: string;
 }
 
 export interface MonitoringDocument extends Document {
@@ -45,3 +48,4 @@ export interface MonitoringDocument extends Document {
 
 // 모델 생성
 export const MonitoringModel = mongoose.model<MonitoringDocument>('Monitoring', MonitoringSchema);
+

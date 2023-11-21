@@ -8,7 +8,7 @@ export class MonitoringController {
   constructor(private readonly monitoringService: MonitoringService) {}
 
   @Post('/register')
-  async registerMonitoringTicket(@Body() monitoringTicketDto: MonitoringTicketDto): Promise<void> {
+  async registerMonitoringTicket(@Body() monitoringTicketDto: MonitoringTicketDto): Promise<void> { 
     console.log('register 감지');
     await this.monitoringService.postToMonitoring(monitoringTicketDto);
   }
@@ -23,5 +23,11 @@ export class MonitoringController {
   async getMonitoringList() {
     console.log('getlist 감지');
     return this.monitoringService.getList();
+  }
+
+  @Get('/existlist')
+  async getMonitoringResultList() {
+    console.log('Monitoring result list 요청 감지');
+    return this.monitoringService.getMonitoringResultList();
   }
 }
