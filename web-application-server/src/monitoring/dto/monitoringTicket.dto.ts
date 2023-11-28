@@ -1,5 +1,5 @@
 export class MonitoringTicketDto {
-  title: string;
+  //title: string;
   flightData: {
     stopover?: Stopover[];
   };

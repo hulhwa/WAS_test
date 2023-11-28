@@ -16,15 +16,16 @@ export const StopoverSchema = new mongoose.Schema({
 });
 
 export const MonitoringSchema = new mongoose.Schema({
-  title: String,
+  //title: String,
   flightData: {
     stopover: [StopoverSchema],
   },
   email: String,
   request_id: String,
+  status: Number,
 });
 
-interface Stopover {
+export interface Stopover {
   flightNumber: string;
   departure: string;
   destination: string;
@@ -38,12 +39,13 @@ interface Stopover {
 }
 
 export interface MonitoringDocument extends Document {
-  title: string;
+  //title: string;
   flightData: {
     stopover: Stopover[];
   };
   email: string;
   request_id: string;
+  status: Number;
 }
 
 // 모델 생성

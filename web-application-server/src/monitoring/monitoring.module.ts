@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MonitoringService } from './monitoring.service';
 import { MonitoringController } from './monitoring.controller';
-import { MonitoringModel, MonitoringSchema } from './monitoring.model';
-import { MonitoringResultSchema } from './monitoringResult.model'
+import { MonitoringSchema } from './monitoring.model';
+import { MonitoringResultSchema } from './monitoringResult.model';
 
 @Module({
   imports: [

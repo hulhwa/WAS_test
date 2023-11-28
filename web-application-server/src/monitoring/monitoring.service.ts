@@ -17,9 +17,11 @@ export class MonitoringService {
   async postToMonitoring(monitoringTicketDto: MonitoringTicketDto): Promise<MonitoringDocument> {
     
     const request_id = uuidv4();
+    const status = 0;
     const monitoringData = {
       ...monitoringTicketDto,
       request_id,
+      status,
     };
 
     const savedDocument = new this.monitoringModel(monitoringData).save();
@@ -40,5 +42,9 @@ export class MonitoringService {
 
   async getMonitoringResultList(): Promise<MonitoringResultDocument[]> {
     return this.monitoringResultModel.find().exec();
+  }
+  async deleteMonitoringResultAll(): Promise<any> {
+    const deleteResults = await this.monitoringResultModel.deleteMany({}).exec();
+    return deleteResults;
   }
 }

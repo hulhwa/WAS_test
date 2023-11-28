@@ -30,4 +30,10 @@ export class MonitoringController {
     console.log('Monitoring result list 요청 감지');
     return this.monitoringService.getMonitoringResultList();
   }
+
+  @Delete('/exist-deleteall')
+  async deleteMonitoringResultAll() {
+    console.log('Delete Monitoring result all 요청 감지');
+    return this.monitoringService.deleteMonitoringResultAll();
+  }
 }
